@@ -11,6 +11,10 @@
   color: #fff;
 }
 
+.logo {
+  padding-left: 6rem;
+}
+
 .title-meal,
 .total-meal {
   padding: 2rem 8rem;
@@ -74,4 +78,11 @@
 
 .meal-name {
   color: #3b2816;
+}
+
+.like-count {
+  display: flex;
+  padding-top: 0.4rem;
+  align-items: end;
+  justify-content: end;
 }
