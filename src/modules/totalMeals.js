@@ -1,10 +1,8 @@
-const mealsUrl = "https://themealdb.com/api/json/v1/1/search.php?f=b";
+import { getMeals } from "./getMeals.js";
 
 const getTotalMeals = async () => {
-  const response = await fetch(mealsUrl);
-  const data = await response.json();
-  const totalMeals = data.meals.length;
-  return totalMeals;
+  const meals = await getMeals();
+  return meals.length;
 };
 
 export const displayTotalMeals = async () => {
