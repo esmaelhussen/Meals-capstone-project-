@@ -7,5 +7,9 @@ export const getMeals = async () => {
     id: meal.idMeal,
     name: meal.strMeal,
     image: meal.strMealThumb,
+    country: meal.strArea,
+    category: meal.strCategory,
+    ingredient_1: meal.strIngredient1,
+    ingredient_2: meal.strIngredient2,
   }));
 };
