@@ -1,5 +1,5 @@
 import { getLikes, postLike } from "./likes.js";
-import { getMeals } from "./Meals.js";
+import { getMeals } from "./getMeals.js";
 import like from "../picture/like.png";
 
 export const displayMeals = async () => {
