@@ -1,7 +1,4 @@
 const mealsUrl = "https://themealdb.com/api/json/v1/1/search.php?f=b";
-const involveUrl =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi";
-const appId = "UxI6SiKH6YcJVdhweXUy";
 
 export const getMeals = async () => {
   const response = await fetch(mealsUrl);
