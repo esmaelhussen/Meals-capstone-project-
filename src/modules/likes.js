@@ -1,4 +1,3 @@
-const mealsUrl = "https://themealdb.com/api/json/v1/1/search.php?f=b";
 const involveUrl =
   "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi";
 const appId = "UxI6SiKH6YcJVdhweXUy";
@@ -28,3 +27,23 @@ export const postLike = async (itemId) => {
     body: JSON.stringify({ item_id: itemId }),
   });
 };
+
+/*
+
+// Function to create new game in involvement API
+
+const newGame = async () => {
+  const data = await fetch(
+    "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/",
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({}),
+    }
+  );
+  const result = await data.json();
+  console.log(result);
+};
+*/
