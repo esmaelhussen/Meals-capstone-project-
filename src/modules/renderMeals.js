@@ -65,7 +65,7 @@ export const displayMeals = async () => {
         commentsHTML = comments
           .map(
             (comment) =>
-              `<p class="comment-list">${comment.creation_date} ${comment.username}: ${comment.commentText}</p>`
+              `<p class="comment-list">${comment.creation_date} ${comment.username}: ${comment.comment}</p>`
           )
           .join("");
       } else {
