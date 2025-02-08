@@ -3,6 +3,7 @@
   padding: 0;
   font-family: "Pacifico", serif;
   font-weight: 400;
+  color: #3b2816;
 }
 
 .header {
@@ -19,7 +20,6 @@
 .title-meal,
 .total-meal {
   padding: 2rem 8rem;
-  color: #3b2816;
 }
 
 .meal-container {
@@ -49,11 +49,6 @@
   display: flex;
   justify-content: end;
   gap: 3rem;
-}
-
-.meal-name,
-.foot {
-  color: #3b2816;
 }
 
 .like-image-button img {
@@ -130,14 +125,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 0.5rem;
-  color: #3b2816;
-}
-
-.add-comment,
-.add-reservations,
-.commentts,
-.reservattions {
-  color: #3b2816;
 }
 
 .all-comment-list,
@@ -151,7 +138,6 @@
 
 .comment-list,
 .reservation-list {
-  color: #3b2816;
   font-weight: bold;
 }
 
@@ -197,5 +183,4 @@ button:hover {
   display: flex;
   justify-content: center;
   background-color: #ab8764;
-  color: 3b2816;
 }
