@@ -1,6 +1,8 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Pacifico", serif;
+  font-weight: 400;
 }
 
 .header {
@@ -8,7 +10,6 @@
   align-items: center;
   gap: 2rem;
   background-color: #ab8764;
-  color: #fff;
 }
 
 .logo {
@@ -29,23 +30,47 @@
   background-color: #b18f6e;
   padding-top: 2rem;
 }
+
 .meal {
   width: 200px;
-  border: 1px solid #755f4ab3;
-  padding: 10px;
-  border-radius: 8px;
+  border: 0.2rem solid #755f4ab3;
+  padding: 1rem;
+  border-radius: 2rem;
   text-align: center;
 }
+
 .meal-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 1rem;
 }
 
 .name-like {
   display: flex;
   justify-content: end;
   gap: 3rem;
+}
+
+.meal-name,
+.foot {
+  color: #3b2816;
+}
+
+.like-image-button img {
+  display: block;
+  width: 1.5rem;
+}
+
+.like-image-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.like-count {
+  display: flex;
+  padding-top: 0.4rem;
+  justify-content: end;
 }
 
 .comment-reservation {
@@ -63,17 +88,7 @@
   cursor: pointer;
   border: 1px solid #bf6b1c;
   border-radius: 1rem;
-}
-.like-image-button {
-  background: none;
-  border: none;
-  padding: 0;
-  display: inline-block;
-  cursor: pointer;
-}
-.like-image-button img {
-  display: block;
-  width: 1.5rem;
+  width: 6rem;
 }
 
 .popup {
@@ -94,6 +109,11 @@
   border-radius: 2rem;
   text-align: center;
   position: relative;
+  overflow: auto;
+}
+
+.js-meal-image {
+  width: 40%;
 }
 
 .close-popup {
@@ -105,37 +125,34 @@
   cursor: pointer;
 }
 
-.meal-name,
-.foot {
-  color: #3b2816;
-}
-
-.like-count {
-  display: flex;
-  padding-top: 0.4rem;
-  align-items: end;
-  justify-content: end;
-}
-
-.js-meal-image {
-  width: 40%;
-}
-
 .meal-information {
   padding-top: 0.5rem;
   display: grid;
-  grid-template-columns: 50px;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 0.5rem;
   color: #3b2816;
 }
 
-.footer {
-  padding: 2rem;
+.add-comment,
+.add-reservations,
+.commentts,
+.reservattions {
+  color: #3b2816;
+}
+
+.all-comment-list,
+.all-reservation-list {
   display: flex;
-  justify-content: center;
-  background-color: #ab8764;
-  color: 3b2816;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.5rem 6.4rem;
+}
+
+.comment-list,
+.reservation-list {
+  color: #3b2816;
+  font-weight: bold;
 }
 
 .comment-info,
@@ -155,9 +172,6 @@
   border: 1px solid #bf6b1c;
 }
 
-::placeholder {
-  color: #3b2816;
-}
 .name,
 .start-date,
 .end-date {
@@ -170,15 +184,18 @@
   height: 4rem;
 }
 
-.comment,
-.reservation {
-  width: 6rem;
-}
-
-.add-comment,
-.commentts {
+::placeholder {
   color: #3b2816;
 }
-.add-comment {
-  padding-top: 7rem;
+
+button:hover {
+  transform: translateY(-0.3rem);
+}
+
+.footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ab8764;
+  color: 3b2816;
 }
