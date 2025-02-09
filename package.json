@@ -4,14 +4,15 @@
   "description": "A Meals capstone project  is website built during the Microverse online program as part of the JavaScript module Capstone project . The purpose of the project was to provide hand on experience in javascript, unit-testing, and API. The app is built using the frontend technologies HTML, CSS, and JavaScript.to display a set of meals",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
     "babel-eslint": "^10.1.0",
     "css-loader": "^7.1.2",
     "eslint": "^7.32.0",
@@ -33,8 +34,5 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  },
-  "scripts": {
-    "test": "jest"
   }
 }
