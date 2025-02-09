@@ -1,10 +1,12 @@
 import { getLikes, postLike } from "./likes.js";
 import { getMeals } from "./getMeals.js";
-import { getComments, postComment } from "./comments.js";
+import { getComments, postComment, getTotalComments } from "./comments.js";
 import like from "../picture/like.png";
-import { getReservations, postReservation } from "./reservations.js";
-import { getTotalComments } from "./totalComments.js";
-import { getTotalReservations } from "./totalReservations.js";
+import {
+  getReservations,
+  postReservation,
+  getTotalReservations,
+} from "./reservations.js";
 
 export const displayMeals = async () => {
   const meals = await getMeals();
