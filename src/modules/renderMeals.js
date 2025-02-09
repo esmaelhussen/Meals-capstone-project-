@@ -3,6 +3,8 @@ import { getMeals } from "./getMeals.js";
 import { getComments, postComment } from "./comments.js";
 import like from "../picture/like.png";
 import { getReservations, postReservation } from "./reservations.js";
+import { getTotalComments } from "./totalComments.js";
+import { getTotalReservations } from "./totalReservations.js";
 
 export const displayMeals = async () => {
   const meals = await getMeals();
@@ -59,9 +61,9 @@ export const displayMeals = async () => {
     let content = "";
     if (type === "comment") {
       const comments = await getComments(meal.id);
-      totalComments = comments.length;
+      totalComments = await getTotalComments(meal.id);
 
-      if (Array.isArray(comments) && comments.length > 0) {
+      if (Array.isArray(comments) && totalComments > 0) {
         commentsHTML = comments
           .map(
             (comment) =>
@@ -85,9 +87,9 @@ export const displayMeals = async () => {
       `;
     } else if (type === "reservation") {
       const reservations = await getReservations(meal.id);
-      totalReservations = reservations.length;
+      totalReservations = await getTotalReservations(meal.id);
 
-      if (Array.isArray(reservations) && reservations.length > 0) {
+      if (Array.isArray(reservations) && totalReservations > 0) {
         reservationsHTML = reservations
           .map(
             (reservation) =>
@@ -153,8 +155,7 @@ export const displayMeals = async () => {
             commentsList.appendChild(newComment);
 
             const totalCommentsElement = document.querySelector(".commentts");
-            const totalComments =
-              document.querySelectorAll(".comment-list").length;
+            const totalComments = await getTotalComments(meal.id);
             totalCommentsElement.textContent = `Comments(${totalComments})`;
 
             document.querySelector(".name-input").value = "";
@@ -187,8 +188,7 @@ export const displayMeals = async () => {
             reservationsList.appendChild(newReservation);
 
             const totalReservationsElement = document.querySelector(".reserve");
-            const totalReservations =
-              document.querySelectorAll(".reservation-list").length;
+            const totalReservations = await getTotalReservations(meal.id);
             totalReservationsElement.textContent = `Reservations(${totalReservations})`;
 
             document.querySelector(".js-name-input").value = "";
