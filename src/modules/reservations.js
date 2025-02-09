@@ -39,3 +39,13 @@ export const postReservation = async (itemId, userName, dateStart, dateEnd) => {
     }),
   });
 };
+
+export const getTotalReservations = async (itemId) => {
+  const reservations = await getReservations(itemId);
+  let totalReservations = 0;
+
+  reservations.forEach(() => {
+    totalReservations++;
+  });
+  return totalReservations;
+};
