@@ -91,7 +91,7 @@ This project can be used to learn and practice javascript ES6 and Webpack. More 
 
 ### screenshoot
 
-![alpha](https://github.com/user-attachments/assets/632ab569-853a-4155-bb76-b3c338698647)
+![Image](https://github.com/user-attachments/assets/6a3cc8f2-6544-43cf-a09c-3598fb02371a)
 
 ## 👥 Author <a name="authors"></a>
 
