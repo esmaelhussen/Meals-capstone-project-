@@ -1,8 +1,19 @@
 import { getMeals } from "./getMeals.js";
 
-const getTotalMeals = async () => {
+//instead of getting numbers from the API calculating it with foreach loop
+
+// const getTotalMeals = async () => {
+//   const meals = await getMeals();
+//   return meals.length;
+// };
+
+export const getTotalMeals = async () => {
   const meals = await getMeals();
-  return meals.length;
+  let totalmeals = 0;
+  meals.forEach(() => {
+    totalmeals++;
+  });
+  return totalmeals;
 };
 
 export const displayTotalMeals = async () => {
