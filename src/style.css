@@ -11,6 +11,8 @@
   align-items: center;
   gap: 2rem;
   background-color: #ab8764;
+  position: fixed;
+  width: 100%;
 }
 
 .logo {
@@ -28,7 +30,7 @@
   flex-wrap: wrap;
   gap: 4rem;
   background-color: #b18f6e;
-  padding-top: 2rem;
+  padding-top: 8rem;
 }
 
 .meal {
