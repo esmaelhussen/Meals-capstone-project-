@@ -1,6 +1,5 @@
-const involveUrl =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi";
-const appId = "UxI6SiKH6YcJVdhweXUy";
+const involveUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+const appId = 'UxI6SiKH6YcJVdhweXUy';
 
 export const getLikes = async () => {
   try {
@@ -8,21 +7,21 @@ export const getLikes = async () => {
 
     const text = await response.text();
     if (!text) {
-      throw new Error("Empty response received from API");
+      throw new Error('Empty response received from API');
     }
 
     return JSON.parse(text);
   } catch (error) {
-    console.error("Error fetching likes:", error);
+    error('Error fetching likes:', error);
     return [];
   }
 };
 
 export const postLike = async (itemId) => {
   await fetch(`${involveUrl}/apps/${appId}/likes`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ item_id: itemId }),
   });

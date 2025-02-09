@@ -1,4 +1,4 @@
-const mealsUrl = "https://themealdb.com/api/json/v1/1/search.php?f=b";
+const mealsUrl = 'https://themealdb.com/api/json/v1/1/search.php?f=b';
 
 export const getMeals = async () => {
   const response = await fetch(mealsUrl);
@@ -13,3 +13,5 @@ export const getMeals = async () => {
     ingredient_2: meal.strIngredient2,
   }));
 };
+
+export default getMeals;

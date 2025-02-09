@@ -1,26 +1,25 @@
-import { getLikes, postLike } from "./likes.js";
-import { getMeals } from "./getMeals.js";
-import { getComments, postComment, getTotalComments } from "./comments.js";
-import like from "../picture/like.png";
+import { getLikes, postLike } from './likes.js';
+import { getMeals } from './getMeals.js';
+import { getComments, postComment, getTotalComments } from './comments.js';
+import like from '../picture/like.png';
 import {
   getReservations,
   postReservation,
   getTotalReservations,
-} from "./reservations.js";
+} from './reservations.js';
 
-export const displayMeals = async () => {
+const displayMeals = async () => {
   const meals = await getMeals();
   const likes = await getLikes();
-  const mealContainer = document.querySelector(".js-meal-Container");
+  const mealContainer = document.querySelector('.js-meal-Container');
 
-  mealContainer.innerHTML = "";
+  mealContainer.innerHTML = '';
 
   meals.forEach((meal) => {
-    const mealDiv = document.createElement("div");
-    mealDiv.classList.add("meal");
+    const mealDiv = document.createElement('div');
+    mealDiv.classList.add('meal');
 
-    const mealLikes =
-      likes.find((like) => like.item_id === meal.id)?.likes || 0;
+    const mealLikes = likes.find((like) => like.item_id === meal.id)?.likes || 0;
 
     mealDiv.innerHTML = `
       <img src="${meal.image}" class="meal-image" alt="${meal.name}">
@@ -40,40 +39,39 @@ export const displayMeals = async () => {
     mealContainer.appendChild(mealDiv);
   });
 
-  document.querySelectorAll(".like-image-button").forEach((btn) => {
-    btn.addEventListener("click", async (event) => {
+  document.querySelectorAll('.like-image-button').forEach((btn) => {
+    btn.addEventListener('click', async (event) => {
       const itemId = event.currentTarget.dataset.id;
       await postLike(itemId);
 
       const likeCountSpan = document.getElementById(`like-count-${itemId}`);
-      let currentLikes = parseInt(likeCountSpan.textContent);
+      const currentLikes = parseInt(likeCountSpan.textContent, 10);
       likeCountSpan.textContent = `${currentLikes + 1} Likes`;
     });
   });
 
   const showPopup = async (meal, type) => {
-    const popup = document.createElement("div");
-    popup.classList.add("popup");
+    const popup = document.createElement('div');
+    popup.classList.add('popup');
 
-    let commentsHTML = "";
-    let reservationsHTML = "";
+    let commentsHTML = '';
+    let reservationsHTML = '';
     let totalComments = 0;
     let totalReservations = 0;
 
-    let content = "";
-    if (type === "comment") {
+    let content = '';
+    if (type === 'comment') {
       const comments = await getComments(meal.id);
       totalComments = await getTotalComments(meal.id);
 
       if (Array.isArray(comments) && totalComments > 0) {
         commentsHTML = comments
           .map(
-            (comment) =>
-              `<p class="comment-list">${comment.creation_date} ${comment.username}: ${comment.comment}</p>`
+            (comment) => `<p class="comment-list">${comment.creation_date} ${comment.username}: ${comment.comment}</p>`,
           )
-          .join("");
+          .join('');
       } else {
-        commentsHTML = "";
+        commentsHTML = '';
       }
 
       content = `
@@ -87,19 +85,18 @@ export const displayMeals = async () => {
         <button class="comment js-comment" data-id="${meal.id}">Comment</button>
       </div>
       `;
-    } else if (type === "reservation") {
+    } else if (type === 'reservation') {
       const reservations = await getReservations(meal.id);
       totalReservations = await getTotalReservations(meal.id);
 
       if (Array.isArray(reservations) && totalReservations > 0) {
         reservationsHTML = reservations
           .map(
-            (reservation) =>
-              `<p class="reservation-list">${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`
+            (reservation) => `<p class="reservation-list">${reservation.date_start} - ${reservation.date_end} by ${reservation.username}</p>`,
           )
-          .join("");
+          .join('');
       } else {
-        reservationsHTML = "";
+        reservationsHTML = '';
       }
 
       content = `
@@ -133,87 +130,89 @@ export const displayMeals = async () => {
 
     document.body.appendChild(popup);
 
-    document.querySelector(".close-popup").addEventListener("click", () => {
+    document.querySelector('.close-popup').addEventListener('click', () => {
       popup.remove();
     });
 
-    if (type === "comment") {
+    if (type === 'comment') {
       document
-        .querySelector(".js-comment")
-        .addEventListener("click", async () => {
-          const userName = document.querySelector(".name-input").value.trim();
+        .querySelector('.js-comment')
+        .addEventListener('click', async () => {
+          const userName = document.querySelector('.name-input').value.trim();
           const commentText = document
-            .querySelector(".comment-input")
+            .querySelector('.comment-input')
             .value.trim();
 
           if (userName && commentText) {
             await postComment(meal.id, userName, commentText);
 
-            const commentsList = document.querySelector(".all-comment-list");
-            const currentDate = new Date().toISOString().split("T")[0];
-            const newComment = document.createElement("p");
-            newComment.classList.add("comment-list");
+            const commentsList = document.querySelector('.all-comment-list');
+            const currentDate = new Date().toISOString().split('T')[0];
+            const newComment = document.createElement('p');
+            newComment.classList.add('comment-list');
             newComment.innerHTML = `${currentDate} ${userName}: ${commentText}`;
             commentsList.appendChild(newComment);
 
-            const totalCommentsElement = document.querySelector(".commentts");
+            const totalCommentsElement = document.querySelector('.commentts');
             const totalComments = await getTotalComments(meal.id);
             totalCommentsElement.textContent = `Comments(${totalComments})`;
 
-            document.querySelector(".name-input").value = "";
-            document.querySelector(".comment-input").value = "";
+            document.querySelector('.name-input').value = '';
+            document.querySelector('.comment-input').value = '';
           }
         });
-    } else if (type === "reservation") {
+    } else if (type === 'reservation') {
       document
-        .querySelector(".js-reservation")
-        .addEventListener("click", async () => {
+        .querySelector('.js-reservation')
+        .addEventListener('click', async () => {
           const userName = document
-            .querySelector(".js-name-input")
+            .querySelector('.js-name-input')
             .value.trim();
           const dateStart = document
-            .querySelector(".js-start-date")
+            .querySelector('.js-start-date')
             .value.trim();
 
-          const dateEnd = document.querySelector(".js-end-date").value.trim();
+          const dateEnd = document.querySelector('.js-end-date').value.trim();
 
           if (userName && dateStart && dateEnd) {
             await postReservation(meal.id, userName, dateStart, dateEnd);
 
             const reservationsList = document.querySelector(
-              ".all-reservation-list"
+              '.all-reservation-list',
             );
 
-            const newReservation = document.createElement("p");
-            newReservation.classList.add("reservation-list");
+            const newReservation = document.createElement('p');
+            newReservation.classList.add('reservation-list');
             newReservation.innerHTML = `${dateStart} - ${dateEnd} by ${userName}`;
             reservationsList.appendChild(newReservation);
 
-            const totalReservationsElement = document.querySelector(".reserve");
+            const totalReservationsElement = document.querySelector('.reserve');
             const totalReservations = await getTotalReservations(meal.id);
             totalReservationsElement.textContent = `Reservations(${totalReservations})`;
 
-            document.querySelector(".js-name-input").value = "";
-            document.querySelector(".js-start-date").value = "";
-            document.querySelector(".js-end-date").value = "";
+            document.querySelector('.js-name-input').value = '';
+            document.querySelector('.js-start-date').value = '';
+            document.querySelector('.js-end-date').value = '';
           }
         });
     }
   };
 
-  document.querySelectorAll(".comment").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
+  document.querySelectorAll('.comment').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
       const itemId = event.currentTarget.dataset.id;
       const meal = meals.find((m) => m.id === itemId);
-      if (meal) showPopup(meal, "comment");
+      if (meal) showPopup(meal, 'comment');
     });
   });
 
-  document.querySelectorAll(".reservation").forEach((btn) => {
-    btn.addEventListener("click", (event) => {
+  document.querySelectorAll('.reservation').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
       const itemId = event.currentTarget.dataset.id;
       const meal = meals.find((m) => m.id === itemId);
-      if (meal) showPopup(meal, "reservation");
+      if (meal) showPopup(meal, 'reservation');
     });
   });
 };
+
+export default displayMeals;

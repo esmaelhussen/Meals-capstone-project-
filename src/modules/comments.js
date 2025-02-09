@@ -1,11 +1,10 @@
-const involveUrl =
-  "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi";
-const appId = "UxI6SiKH6YcJVdhweXUy";
+const involveUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+const appId = 'UxI6SiKH6YcJVdhweXUy';
 
 export const getComments = async (itemId) => {
   try {
     const response = await fetch(
-      `${involveUrl}/apps/${appId}/comments?item_id=${itemId}`
+      `${involveUrl}/apps/${appId}/comments?item_id=${itemId}`,
     );
 
     if (!response.ok) {
@@ -20,16 +19,16 @@ export const getComments = async (itemId) => {
     const data = JSON.parse(text);
     return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.error("Error fetching comments:", error);
+    console.error('Error fetching comments:', error);
     return [];
   }
 };
 
 export const postComment = async (itemId, userName, commentText) => {
   await fetch(`${involveUrl}/apps/${appId}/comments`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       item_id: itemId,
@@ -44,7 +43,7 @@ export const getTotalComments = async (itemId) => {
   let totalComments = 0;
 
   comments.forEach(() => {
-    totalComments++;
+    totalComments += 1;
   });
   return totalComments;
 };
