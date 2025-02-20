@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --open",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "test": "jest",
     "lint:fix": "eslint . --fix",
     "deploy": "gh-pages -d dist"
