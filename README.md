@@ -51,7 +51,7 @@ The key features of this website include.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://esmaelhussen.github.io/)
+- [Live Demo Link](https://esmaelhussen.github.io/Meals-capstone-project-)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
